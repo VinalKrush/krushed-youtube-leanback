@@ -56,6 +56,13 @@ Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
 ---
 
 ## Screenshots
+![Screenshot 2025-01-25 062853](https://github.com/user-attachments/assets/de7c4746-bcb5-466c-b22d-bb018350eaf8)
+
+![Screenshot 2025-01-25 062956](https://github.com/user-attachments/assets/4d3e3862-55b8-4cd0-a8c0-8e18afb38be4)
+
+![Screenshot 2025-01-25 063045](https://github.com/user-attachments/assets/d26bdb7f-6ce7-4bd5-8a30-6181c14332fe)
+
+
 
 ---
 
