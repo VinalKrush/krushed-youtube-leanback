@@ -4,6 +4,14 @@
 
 ---
 
+---
+
+## Disclaimer
+Krushed YouTube Leanback is **not affiliated with, endorsed by, or created by YouTube, Google, or Alphabet Inc.**.  
+YouTube and YouTube on TV are trademarks of Google LLC. This application is a third-party project that provides an alternative method to access YouTube's Leanback interface.
+
+---
+
 ## Features
 
 - 📺 **Access YouTube Leanback** (`youtube.com/tv`) directly from your desktop.
