@@ -1,0 +1,19 @@
+{
+  "name": "krushed-youtube-leanback",
+  "version": "1.0.0",
+  "description": "An App That Runs The TV Version Of YouTube (Also Known As YouTube Leanback)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Vinal Krush",
+  "license": "ISC",
+  "dependencies": {
+    "electron-store": "^10.0.0",
+    "node-gamepad": "^0.1.15"
+  },
+  "devDependencies": {
+    "electron": "^34.0.1"
+  }
+}
