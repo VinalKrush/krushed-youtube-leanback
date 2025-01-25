@@ -53,6 +53,10 @@ Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
 1. Launch the app.
 2. Navigate YouTube with your keyboard or mouse, (Using steam input for controller use is recommended to use this app just like on TV).
 
+## Steam Input Layout
+You Can copy this layout for your Steam Input. This is the layout I personally use.
+![Screenshot 2025-01-25 062300](https://github.com/user-attachments/assets/8d18997f-0899-44df-bdf2-0fefff0399dd)
+
 ---
 
 ## Screenshots
