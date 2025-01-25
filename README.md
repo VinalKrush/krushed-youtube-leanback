@@ -20,6 +20,25 @@ YouTube and YouTube on TV are trademarks of Google LLC. This application is a th
 
 ---
 
+## Benefits
+Here are the benefits of using Krushed YouTube Leanback on PC instead of the YouTube app on TVs:
+	1.	Almost Zero Lag
+      - Experience smoother playback and navigation without the input delays common on TV apps. This ensures quicker access to content and a more responsive overall experience.
+	2.	Faster Responding UI
+      - The user interface is more responsive compared to the often sluggish performance of YouTube apps on older or less powerful TV hardware.
+	3.	4K Streaming with Ease
+      - Streaming in 4K resolution is seamless on a PC, avoiding buffering issues and quality limitations that some TVs impose due to bandwidth or hardware constraints.
+	4.	HDR Support (Untested)
+      - Potential HDR playback capability enhances video quality for users with HDR-capable monitors or displays, providing vibrant colors and improved contrast.
+	6.	Better Hardware Performance
+      - PCs generally have more powerful processors and GPUs than most smart TVs, resulting in smoother playback and better multitasking if needed.
+	8.	Convenience and Flexibility
+      - Easily switch between YouTube and other tasks or apps on your PC, making it a better choice for multitaskers or those who want more control over their viewing environment.
+
+These features make Krushed YouTube Leanback a compelling alternative for users seeking a superior YouTube experience on PC. Would you like assistance in further refining or promoting this project?
+
+---
+
 ## Installation
 
 ### Precompiled Releases
