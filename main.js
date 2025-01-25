@@ -4,7 +4,7 @@ const https = require("https");
 const fs = require("fs");
 const wait = require("wait");
 
-let debugMode = true;
+let debugMode = false;
 
 // Create Windows
 let mainWindow, updateWindow;
