@@ -32,9 +32,6 @@ Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
    git clone https://github.com/VinalKrush/krushed-youtube-leanback.git
    cd krushed-youtube-leanback
    ```
-
-````
-
 2. Install dependencies:
    ```bash
    npm install
@@ -88,4 +85,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 We'd love to hear from you! Feel free to [open an issue](https://github.com/VinalKrush/krushed-youtube-leanback/issues) for bug reports, feature requests, or general feedback.
 Let me know if you want any additional sections or tweaks!
-````
