@@ -1,6 +1,6 @@
 {
   "name": "krushed-youtube-leanback",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An App That Runs The TV Version Of YouTube (Also Known As YouTube Leanback)",
   "main": "main.js",
   "scripts": {
