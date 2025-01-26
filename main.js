@@ -3,8 +3,10 @@ const path = require("path");
 const https = require("https");
 const fs = require("fs");
 const wait = require("wait");
+const ini = require("ini");
+const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
 
-let debugMode = false;
+debugMode;
 
 // Create Windows
 let mainWindow, updateWindow;
@@ -34,7 +36,7 @@ async function checkForUpdates() {
                   "_________________________________________________________WARNING: Local Version Is Higher Then Remote Version.\nThis May Be a Untested Build.\nProceed With Caution.\n_________________________________________________________"
                 );
                 resolve({ updateAvailable: false });
-              } else {
+              } else if (localVersion < remoteVersion) {
                 resolve({ updateAvailable: true, remoteVersion });
               }
             } catch (err) {
@@ -82,10 +84,10 @@ app.on("ready", async () => {
   const customSession = session.fromPartition(partition);
 
   function createMainWindow() {
-    if (debugMode) {
+    if (config.debugMode) {
       mainWindow = new BrowserWindow({
-        width: 3840,
-        height: 2160,
+        width: 1280,
+        height: 720,
         fullscreen: false,
         webPreferences: {
           session: customSession,
@@ -98,8 +100,8 @@ app.on("ready", async () => {
       });
     } else {
       mainWindow = new BrowserWindow({
-        width: 3840,
-        height: 2160,
+        width: config.width,
+        height: config.height,
         fullscreen: true,
         webPreferences: {
           session: customSession,
@@ -131,7 +133,11 @@ app.on("ready", async () => {
 
     // Load YouTube TV
     mainWindow.loadURL("https://youtube.com/tv");
-    consoleLog("Loaded YouTube TV");
+    consoleLog("Loading YouTube On TV, This May Take A Moment...");
+
+    mainWindow.webContents.on("did-finish-load", () => {
+      consoleLog("YouTube On TV Loaded");
+    });
 
     //Hide Cursor When Video Play
     mainWindow.webContents.on("media-started-playing", () => {
@@ -160,6 +166,7 @@ app.on("ready", async () => {
     const { updateAvailable } = await checkForUpdates();
     if (updateAvailable) {
       createUpdateWindow();
+      await wait(5 * 1000);
       shell.openExternal(
         "https://github.com/VinalKrush/krushed-youtube-leanback/releases"
       ); // Opens in the user's default browser

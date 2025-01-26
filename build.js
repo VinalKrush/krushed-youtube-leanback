@@ -5,52 +5,52 @@ const pJSON = require("./package.json");
 // Linux Package Configuration
 const linuxConfig = {
   dir: ".", // Current directory
-  out: path.join(__dirname, "..", "KYL_Builds", `${pJSON.version}`, "linux"), // Output directory
+  out: path.join(__dirname, "..", "KYL_Builds", `${pJSON.version}`), // Output directory
   overwrite: true,
   platform: "linux", // Change as needed: win32, darwin, linux
   arch: "x64", // Architecture: x64, ia32, arm64, etc.
   icon: path.join(__dirname, "media", "KYL.ico"), // Optional: Path to icon file
   appVersion: pJSON.version, // Use version from package.json
-  name: `${pJSON.name}-${pJSON.version}-linux-portable`, // Include version in the name
+  name: `${pJSON.name}-${pJSON.version}-portable`, // Include version in the name
   ignore: ["build.js"], // Ignore Built Files
 };
 
 // Windows 64 Bit Package Configuration
 const win32_x64Config = {
   dir: ".", // Current directory
-  out: path.join(__dirname, "..", "KYL_Builds", `${pJSON.version}`, "win"), // Output directory
+  out: path.join(__dirname, "..", "KYL_Builds", `${pJSON.version}`), // Output directory
   overwrite: true,
   platform: "win32", // Change as needed: win32, darwin, linux
   arch: "x64", // Architecture: x64, ia32, arm64, etc.
   icon: path.join(__dirname, "media", "KYL.ico"), // Optional: Path to icon file
   appVersion: pJSON.version, // Use version from package.json
-  name: `${pJSON.name}-${pJSON.version}-win32-x64-portable`, // Include version in the name
+  name: `${pJSON.name}-${pJSON.version}-portable`, // Include version in the name
   ignore: ["build.js"], // Ignore Built Files
 };
 
 // Windows Arm Package Configuration
 const win32_arm64Config = {
   dir: ".", // Current directory
-  out: path.join(__dirname, "..", "KYL_Builds", `${pJSON.version}`, "win"), // Output directory
+  out: path.join(__dirname, "..", "KYL_Builds", `${pJSON.version}`), // Output directory
   overwrite: true,
   platform: "win32", // Change as needed: win32, darwin, linux
   arch: "arm64", // Architecture: x64, ia32, arm64, etc.
   icon: path.join(__dirname, "media", "KYL.ico"), // Optional: Path to icon file
   appVersion: pJSON.version, // Use version from package.json
-  name: `${pJSON.name}-${pJSON.version}-win32-arm64-portable`, // Include version in the name
+  name: `${pJSON.name}-${pJSON.version}-portable`, // Include version in the name
   ignore: ["build.js"], // Ignore Built Files
 };
 
 // Windows 32 Bit Package Configuration
 const win32_ia32Config = {
   dir: ".", // Current directory
-  out: path.join(__dirname, "..", "KYL_Builds", `${pJSON.version}`, "win"), // Output directory
+  out: path.join(__dirname, "..", "KYL_Builds", `${pJSON.version}`), // Output directory
   overwrite: true,
   platform: "win32", // Change as needed: win32, darwin, linux
   arch: "ia32", // Architecture: x64, ia32, arm64, etc.
   icon: path.join(__dirname, "media", "KYL.ico"), // Optional: Path to icon file
   appVersion: pJSON.version, // Use version from package.json
-  name: `${pJSON.name}-${pJSON.version}-win32-ia32-portable`, // Include version in the name
+  name: `${pJSON.name}-${pJSON.version}-portable`, // Include version in the name
   ignore: ["build.js"], // Ignore Built Files
 };
 
