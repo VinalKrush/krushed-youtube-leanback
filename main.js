@@ -3,8 +3,7 @@ const path = require("path");
 const https = require("https");
 const fs = require("fs");
 const wait = require("wait");
-const ini = require("ini");
-const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
+const config = require("./config.json");
 
 // Create Windows
 let mainWindow, updateWindow;
@@ -82,7 +81,7 @@ app.on("ready", async () => {
   const customSession = session.fromPartition(partition);
 
   function createMainWindow() {
-    if (config.debugMode) {
+    if (config.Debugging.debugMode) {
       mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
@@ -98,8 +97,8 @@ app.on("ready", async () => {
       });
     } else {
       mainWindow = new BrowserWindow({
-        width: config.width,
-        height: config.height,
+        width: config.Resolution.width,
+        height: config.Resolution.height,
         fullscreen: true,
         webPreferences: {
           session: customSession,
@@ -160,7 +159,7 @@ app.on("ready", async () => {
     });
   }
 
-  if (config.updateNotifier) {
+  if (config.System.updateNotifier) {
     try {
       const { updateAvailable } = await checkForUpdates();
       if (updateAvailable) {
