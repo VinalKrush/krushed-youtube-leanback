@@ -5,8 +5,8 @@
 
   "Resolution": {
     "NOTE": "Don't touch unless you know what your doing. YouTube get's stuck at 480p or below even if it's set to 1080p.",
-    "width": "7680",
-    "height": "4320"
+    "width": "3840",
+    "height": "2160"
   },
 
   "System": {
