@@ -9,8 +9,15 @@ const config = require("./config.json");
 let mainWindow, updateWindow;
 
 // Fetch Latest Version
-let packageVersionURL =
-  "https://raw.githubusercontent.com/VinalKrush/krushed-youtube-leanback/main/package.json";
+let packageVersionURL;
+if (config.selectedUpdateChannel === "stable") {
+  packageVersionURL = config.updateChannels.stable;
+} else {
+  packageVersionURL = config.updateChannels.canary;
+  console.log(
+    "\n___________________________________________\nWARNING: Canary Version Detected. This Is Most Likely UNTESTED And May Break.\n___________________________________________"
+  );
+}
 let localVersion = require("./package.json").version;
 
 async function checkForUpdates() {

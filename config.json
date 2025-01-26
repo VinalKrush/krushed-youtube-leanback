@@ -10,6 +10,12 @@
   },
 
   "System": {
+    "updateChannels": {
+      "stable": "https://raw.githubusercontent.com/VinalKrush/krushed-youtube-leanback/main/package.json",
+      "canary": "https://raw.githubusercontent.com/VinalKrush/krushed-youtube-leanback/canary/package.json"
+    },
+    "slectedUpdateChannel": "stable",
+
     "updateNotifier": true
   }
 }
