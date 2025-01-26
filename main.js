@@ -1,4 +1,5 @@
 const { app, BrowserWindow, session, shell } = require("electron");
+const { spawn } = require("child_process");
 const path = require("path");
 const https = require("https");
 const fs = require("fs");
@@ -10,10 +11,10 @@ let mainWindow, updateWindow;
 
 // Fetch Latest Version
 let packageVersionURL;
-if (config.selectedUpdateChannel === "stable") {
-  packageVersionURL = config.updateChannels.stable;
+if (config.System.selectedUpdateChannel === "stable") {
+  packageVersionURL = config.System.updateChannels.stable;
 } else {
-  packageVersionURL = config.updateChannels.canary;
+  packageVersionURL = config.System.updateChannels.canary;
   console.log(
     "\n___________________________________________\nWARNING: Canary Version Detected. This Is Most Likely UNTESTED And May Break.\n___________________________________________"
   );
