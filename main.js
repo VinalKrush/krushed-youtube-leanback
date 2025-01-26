@@ -7,7 +7,7 @@ const wait = require("wait");
 const config = require("./config.json");
 
 // Create Windows
-let mainWindow, updateWindow;
+let mainWindow, updateWindow, splashWindow;
 
 // Fetch Latest Version
 let packageVersionURL;
@@ -38,7 +38,7 @@ async function checkForUpdates() {
                 resolve({ updateAvailable: false });
               } else if (localVersion > remoteVersion) {
                 console.warn(
-                  "_________________________________________________________WARNING: Local Version Is Higher Then Remote Version.\nThis May Be a Untested Build.\nProceed With Caution.\n_________________________________________________________"
+                  "_________________________________________________________\nWARNING: Local Version Is Higher Then Remote Version.\nThis May Be a Untested Build.\nProceed With Caution.\n_________________________________________________________"
                 );
                 resolve({ updateAvailable: false });
               } else if (localVersion < remoteVersion) {
@@ -85,6 +85,19 @@ function createUpdateWindow() {
 }
 
 app.on("ready", async () => {
+  // Create the splash screen
+  splashWindow = new BrowserWindow({
+    width: 250,
+    height: 250,
+    backgroundColor: "#000000",
+    frame: false,
+    movable: false,
+    resizable: false,
+    alwaysOnTop: true,
+  });
+
+  splashWindow.loadFile("splash.html");
+  consoleLog("Created splash screen");
   const partition = "persist:youtube_tv"; // Session Name
   const customSession = session.fromPartition(partition);
 
@@ -118,6 +131,7 @@ app.on("ready", async () => {
         backgroundColor: "#000000",
       });
     }
+    mainWindow.hide();
   }
 
   function startApp() {
@@ -141,7 +155,10 @@ app.on("ready", async () => {
     consoleLog("Loading YouTube On TV, This May Take A Moment...");
 
     mainWindow.webContents.on("did-finish-load", () => {
+      splashWindow.hide();
       consoleLog("YouTube On TV Loaded");
+      mainWindow.show();
+      splashWindow.close();
     });
 
     //Hide Cursor When Video Play
