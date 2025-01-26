@@ -6,8 +6,6 @@ const wait = require("wait");
 const ini = require("ini");
 const config = ini.parse(fs.readFileSync("./config.ini", "utf-8"));
 
-debugMode;
-
 // Create Windows
 let mainWindow, updateWindow;
 
