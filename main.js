@@ -162,22 +162,27 @@ app.on("ready", async () => {
     });
   }
 
-  try {
-    const { updateAvailable } = await checkForUpdates();
-    if (updateAvailable) {
-      createUpdateWindow();
-      await wait(5 * 1000);
-      shell.openExternal(
-        "https://github.com/VinalKrush/krushed-youtube-leanback/releases"
-      ); // Opens in the user's default browser
-      await wait(5 * 1000);
-      if (updateWindow) updateWindow.close();
-      startApp();
-    } else {
+  if (config.updateNotifier) {
+    try {
+      const { updateAvailable } = await checkForUpdates();
+      if (updateAvailable) {
+        consoleLog("Update Available!");
+        createUpdateWindow();
+        await wait(5 * 1000);
+        shell.openExternal(
+          "https://github.com/VinalKrush/krushed-youtube-leanback/releases"
+        ); // Opens in the user's default browser
+        await wait(5 * 1000);
+        if (updateWindow) updateWindow.close();
+        startApp();
+      } else {
+        startApp();
+      }
+    } catch (error) {
+      console.error("Error checking for updates:\n", error);
       startApp();
     }
-  } catch (error) {
-    console.error("Error checking for updates:\n", error);
+  } else {
     startApp();
   }
 });
