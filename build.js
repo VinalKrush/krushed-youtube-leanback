@@ -69,8 +69,7 @@ const win32_x64InstallerConfig = {
   arch: "x64", // Architecture: x64, ia32, arm64, etc.
   icon: path.join(__dirname, "media", "KYL.ico"), // Optional: Path to icon file
   appVersion: pJSON.version, // Use version from package.json
-  name: `${pJSON.name}-${pJSON.version}`, // Include version in the name
-  appName: `${pJSON.name}`, // Application name
+  name: `${pJSON.name}`, // Include version in the name
   ignore: ["build.js"], // Ignore Built Files
 };
 
