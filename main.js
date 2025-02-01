@@ -15,7 +15,7 @@ if (config.System.selectedUpdateChannel === "stable") {
   packageVersionURL = config.System.updateChannels.stable;
 } else {
   packageVersionURL = config.System.updateChannels.canary;
-  console.log(
+  applicationLog(
     "\n___________________________________________\nWARNING: Canary Version Detected. This Is Most Likely UNTESTED And May Break.\n___________________________________________"
   );
 }
@@ -31,21 +31,21 @@ async function checkForUpdates() {
           res.on("end", () => {
             try {
               const remoteVersion = JSON.parse(data).version;
-              consoleLog(
+              applicationLog(
                 `Local Version: ${localVersion} | Remote Version: ${remoteVersion}`
               );
               if (localVersion === remoteVersion) {
                 resolve({ updateAvailable: false });
               } else if (localVersion > remoteVersion) {
-                console.warn(
-                  "_________________________________________________________\nWARNING: Local Version Is Higher Then Remote Version.\nThis May Be a Untested Build.\nProceed With Caution.\n_________________________________________________________"
+                applicationLog(
+                  "\n_________________________________________________________\nWARNING: Local Version Is Higher Then Remote Version.\nThis May Be a Untested Build.\nProceed With Caution.\n_________________________________________________________"
                 );
                 resolve({ updateAvailable: false });
               } else if (localVersion < remoteVersion) {
                 resolve({ updateAvailable: true, remoteVersion });
               }
             } catch (err) {
-              console.error("Failed To Read Update Info", data);
+              applicationLog("Failed To Read Update Info", data);
               reject(new Error("Invalid JSON response from update server"));
             }
           });
@@ -97,7 +97,7 @@ app.on("ready", async () => {
   });
 
   splashWindow.loadFile("splash.html");
-  consoleLog("Created splash screen");
+  applicationLog("Created splash screen");
   const partition = "persist:youtube_tv"; // Session Name
   const customSession = session.fromPartition(partition);
 
@@ -148,15 +148,15 @@ app.on("ready", async () => {
       }
     );
 
-    consoleLog("Created Main Window");
+    applicationLog("Created Main Window");
 
     // Load YouTube TV
     mainWindow.loadURL("https://youtube.com/tv");
-    consoleLog("Loading YouTube On TV, This May Take A Moment...");
+    applicationLog("Loading YouTube On TV, This May Take A Moment...");
 
     mainWindow.webContents.on("did-finish-load", () => {
       splashWindow.hide();
-      consoleLog("YouTube On TV Loaded");
+      applicationLog("YouTube On TV Loaded");
       mainWindow.show();
       splashWindow.close();
     });
@@ -177,7 +177,7 @@ app.on("ready", async () => {
 
     // Handle Window Closes
     mainWindow.on("closed", () => {
-      consoleLog("Window Closed");
+      applicationLog("Window Closed");
       mainWindow = null;
       app.quit();
       return;
@@ -188,7 +188,7 @@ app.on("ready", async () => {
     try {
       const { updateAvailable } = await checkForUpdates();
       if (updateAvailable) {
-        consoleLog("Update Available!");
+        applicationLog("Update Available!");
         createUpdateWindow();
         await wait(5 * 1000);
         shell.openExternal(
@@ -201,7 +201,7 @@ app.on("ready", async () => {
         startApp();
       }
     } catch (error) {
-      console.error("Error checking for updates:\n", error);
+      applicationLog("Error checking for updates:\n", error);
       startApp();
     }
   } else {
@@ -223,6 +223,16 @@ app.on("activate", () => {
   }
 });
 
-function consoleLog(input) {
+// Logging Function
+function applicationLog(input) {
   console.log(input);
+  const timestamp = new Date().toISOString();
+  const logEntry = `${timestamp} - ${input}\n`;
+  const logFile = path.join(__dirname, "logs/krushed-youtube-leanback.log");
+
+  fs.appendFile(logFile, logEntry, (err) => {
+    if (err) {
+      console.error("Error writing to log file", err);
+    }
+  });
 }
