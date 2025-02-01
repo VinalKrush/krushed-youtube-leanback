@@ -1,4 +1,12 @@
-const { app, BrowserWindow, session, shell, dialog } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  session,
+  shell,
+  dialog,
+  globalShortcut,
+  ipcRenderer,
+} = require("electron");
 const { spawn } = require("child_process");
 const path = require("path");
 const https = require("https");
@@ -8,6 +16,11 @@ const config = require("./config.json");
 
 // Create Windows
 let mainWindow, updateWindow, splashWindow;
+
+// Pip Mode Stuff
+let isPipMode = false;
+const PIP_WIDTH = 640;
+const PIP_HEIGHT = 338;
 
 // Check For Internet Connection To Avoid Errors
 function checkInternetConnection() {
@@ -108,6 +121,7 @@ app.on("ready", async () => {
     resizable: false,
     alwaysOnTop: true,
   });
+  splashWindow.center();
 
   splashWindow.loadFile("splash.html");
   applicationLog("Created splash screen");
@@ -140,7 +154,7 @@ app.on("ready", async () => {
           contextIsolation: true,
           webviewTag: true,
         },
-        frame: false,
+        frame: true,
         backgroundColor: "#000000",
       });
     }
@@ -166,6 +180,34 @@ app.on("ready", async () => {
     // Load YouTube TV
     mainWindow.loadURL("https://youtube.com/tv");
     applicationLog("Loading YouTube On TV, This May Take A Moment...");
+
+    // Register Global Shortcut For Pip Mode
+    globalShortcut.register("Ctrl+Shift+P", () => {
+      if (!mainWindow) {
+        applicationLog("Error: Main Window Not Found, Can't set Pip mode.");
+        dialog.showErrorBox(
+          "Error: Main Window Not Found",
+          "Can't set Pip mode."
+        );
+        return;
+      }
+      applicationLog("mainWindow type:", mainWindow.constructor.name);
+      applicationLog("Available methods", Object.keys(mainWindow.__proto__));
+
+      if (isPipMode) {
+        // Toggle Back To Fullscreen
+        mainWindow.setFullScreen(true);
+        mainWindow.setAlwaysOnTop(false);
+        isPipMode = false;
+      } else {
+        // Toggle To Pip Mode
+        mainWindow.setFullScreen(false);
+        mainWindow.setAlwaysOnTop(true);
+        mainWindow.setSize(PIP_WIDTH, PIP_HEIGHT);
+        mainWindow.center();
+        isPipMode = true;
+      }
+    });
 
     mainWindow.webContents.on("did-finish-load", () => {
       splashWindow.hide();

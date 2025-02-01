@@ -94,7 +94,7 @@ These features make Krushed YouTube Leanback a compelling alternative for users 
 
 ### Build from Source
 
-Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+Ensure you have [Node.js](https://nodejs.org/) [npm](https://www.npmjs.com/) installed.
 
 1. Clone the repository:
    ```bash
@@ -162,12 +162,11 @@ This project is licensed under the [MIT License](LICENSE).
 We'd love to hear from you! Feel free to [open an issue](https://github.com/VinalKrush/krushed-youtube-leanback/issues) for bug reports, feature requests, or general feedback.
 Let me know if you want any additional sections or tweaks!
 
-
 ---
 
 ## Author
 
 **Krushed YouTube Leanback** is developed and maintained by **Vinal Krush**.
 ![Screenshot 2025-02-01 095204](https://github.com/user-attachments/assets/42052c71-2141-4322-9e93-a6e9237378aa)
-### I'm also a small artist. Check out my music [HERE](https://www.youtube.com/@VinalKrush) to support me!
 
+### I'm also a small artist. Check out my music [HERE](https://www.youtube.com/@VinalKrush) to support me!
