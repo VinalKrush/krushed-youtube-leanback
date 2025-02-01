@@ -1,4 +1,4 @@
-const { app, BrowserWindow, session, shell } = require("electron");
+const { app, BrowserWindow, session, shell, dialog } = require("electron");
 const { spawn } = require("child_process");
 const path = require("path");
 const https = require("https");
@@ -8,6 +8,19 @@ const config = require("./config.json");
 
 // Create Windows
 let mainWindow, updateWindow, splashWindow;
+
+// Check For Internet Connection To Avoid Errors
+function checkInternetConnection() {
+  return new Promise((resolve) => {
+    https
+      .get("https://www.youtube.com", (res) => {
+        resolve(true);
+      })
+      .on("error", () => {
+        resolve(false);
+      });
+  });
+}
 
 // Fetch Latest Version
 let packageVersionURL;
@@ -182,6 +195,17 @@ app.on("ready", async () => {
       app.quit();
       return;
     });
+  }
+
+  // Check if connected to internet
+  const isConnected = await checkInternetConnection();
+  if (!isConnected) {
+    dialog.showErrorBox(
+      "Couldn't Connect To YouTube",
+      "Please Check Your Internet Connection"
+    );
+    app.quit();
+    return;
   }
 
   if (config.System.updateNotifier) {
