@@ -71,11 +71,7 @@ These features make Krushed YouTube Leanback a compelling alternative for users 
 
 - For a unknown reason, some videos will autoplay in 480p, even if your PC is capable of playing them in a higher resolution. though you can change it back to 1080p or higher.
 
-4. No Support for YouTube's Picture-in-Picture Mode
-
-- Unlike YouTube on mobile and browser, this application does not support picture-in-picture mode.
-
-5. More And Longer Ads
+4. More And Longer Ads
 
 - This application does not block ads (because it's against TOS), and YouTube on TV is known for having more and longer ads then YouTube mobile and browser.
 
@@ -91,6 +87,8 @@ These features make Krushed YouTube Leanback a compelling alternative for users 
      `Downloadn the exe installer or download the 7z archive arcording to your architecture`
    - Linux:
      `Download the 7z archive for 64 Bit`
+   - MacOS:
+     `For MacOS, you must compile from source.`
 
 ### Build from Source
 
@@ -123,6 +121,7 @@ Ensure you have [Node.js](https://nodejs.org/) [npm](https://www.npmjs.com/) ins
 - Arrow Keys: Basic Navigation
 - Enter: Forawrd
 - Escape/Backspace: Back
+- Ctrl+Shift+P: Toggle Pip Mode
 
 ## Steam Input Layout
 
